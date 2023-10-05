@@ -215,6 +215,8 @@ $lightgreen: #b9e7e7;
             p {
               font-size: 18px;
             }
+
+            //WILL BE REUSE IN THE SINGLE PAGE - THINK TO MAKE IT A COMPOENENT
             button {
               width: max-content;
               padding: 10px 20px;
@@ -245,7 +247,7 @@ $lightgreen: #b9e7e7;
 
     //SINGLE PAGE
     .single {
-      background-color: red;
+      // background-color: red;
 
       display: flex;
 
@@ -254,9 +256,11 @@ $lightgreen: #b9e7e7;
 
       .content {
         flex: 5;
-        background-color: green;
-
-        //POST IMAGE - make it 100% of the FLEX item container
+        // background-color: green;
+        //Add space between the vertical elements - use flex column
+        display: flex;
+        flex-direction: column;
+        gap: 30px; //POST IMAGE - make it 100% of the FLEX item container
         img {
           width: 100%;
           height: 300px;
@@ -271,7 +275,7 @@ $lightgreen: #b9e7e7;
           display: flex;
           align-items: center;
           gap: 10px;
-          background-color: red;
+          // background-color: red;
           //DECREASE
           font-size: 14px;
 
@@ -292,17 +296,192 @@ $lightgreen: #b9e7e7;
 
         .edit {
           display: flex;
+          gap: 5px;
           img {
             width: 20px;
             height: 20px;
             cursor: pointer;
           }
         }
+
+        h1 {
+          font-size: 42px;
+          //Darker
+          color: #333;
+        }
+
+        p {
+          //TEXT ENDS AT THE SAME LINE - LOOKS BETTER
+          text-align: justify;
+          //INCREAE LINEHIETH
+          // line-height: 2;
+          line-height: 30px;
+        }
       }
 
       .menu {
         flex: 2;
-        background-color: blue;
+        // background-color: blue;
+
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        h1 {
+          font-size: 20px;
+          //DARKER
+          color: #555;
+        }
+
+        //FLEX TO ADD SPACE BETWEEN post item: img - h2 - and button
+        .post {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          //DONT ALIGN ITEMS! I WANT THE img and h2 to  be 100% and the button width: max-content
+          img {
+            width: 100%;
+            height: 200px;
+            //CROPED AND MORE CLEAR
+            object-fit: cover;
+          }
+
+          h2 {
+            //REDUDANT - h2 is a block element and 100% width
+            width: 100%;
+            // background-color: red;
+            //DARKER
+            color: #555;
+          }
+
+          //SAME BUTTON AS HOME PAGE - THINK ABOUT COMPONENT
+          button {
+            width: max-content;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid teal;
+            color: teal;
+
+            &:hover {
+              border: 1px solid white;
+              background-color: $lightgreen;
+              color: black;
+            }
+          }
+        }
+      }
+    }
+
+    //WRITE
+    .add {
+      //background-color: blue;
+      margin-top: 20px;
+      display: flex;
+
+      //justify-content: space-between;?
+      //NOT - WANT TOTAL WIDTH TO BE FILLED WITH THIS 2 SECTIONS
+      gap: 20px;
+
+      .content {
+        flex: 5;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        //background-color: red;
+
+        //Title
+        input {
+          padding: 10px;
+          border: lightgray solid 1px;
+        }
+
+        .editorContainer {
+          height: 300px;
+          // background-color: red;
+          overflow: scroll;
+          border: solid lightgray 1px;
+
+          //THE MENU BAR OF THE LIBRARY
+          //- make it 100% of it's parent
+          //- and delay it's border
+          .editor {
+            // background-color: green;
+            height: 100%;
+            border: none;
+          }
+        }
+      }
+      //flex vertical for spacing between the 2 items
+      .menu {
+        flex: 2;
+        //background-color: yellow;
+
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .item {
+          border: lightgray 1px solid;
+          padding: 10px;
+
+          //MAKE THE HEIGHT OF THE 2 ITEMS SAME(VERTICAL LAYOUT)
+          flex: 1;
+
+          //MAKE THE ITEMS IN EACH OF THE 2 ITEMS ONE ON TOP OF THE OTHER
+          //AND ACROOS THE ENTIRE HEIGHT - FLEX COLUMN + justify-content: space-between
+          display: flex;
+          flex-direction: column;
+          font-size: 12px;
+          color: #555;
+
+          justify-content: space-between;
+
+          h1 {
+            font-size: 20px;
+          }
+
+          .file {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+
+          .buttons {
+            display: flex;
+            justify-content: space-between;
+
+            //LEFT BUTTON - SAVE AS A DRAFT
+
+            button {
+              cursor: pointer;
+              padding: 3px 5px;
+            }
+            :first-child {
+              //cursor: pointer;
+              color: teal;
+              background-color: white;
+              border: 1px solid teal;
+              // padding: 3px 5px;
+            }
+
+            :last-child {
+              //cursor: pointer;
+              color: white;
+              background-color: teal;
+              border: 1px solid teal;
+              // padding: 3px 5px;
+            }
+          }
+
+          .cat {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            color: teal;
+            //background-color: blue;
+          }
+        }
       }
     }
   }
